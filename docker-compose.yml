@@ -25,11 +25,6 @@ services:
         POSTGRES_DB: kometaDB
     volumes:
       - postgres_data:/var/lib/postgresql
-  adminer:
-    restart: always
-    image: adminer
-    ports:
-      - 8888:8080
 
 volumes:
   postgres_data:
