@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="api.Models.kometaDBContext">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAQAQAAAAAAgAAAAAEIAAAAAAgABAAikBAAA=</HashCode>
+      <FileName>Models\kometaDBContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.S1v1">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Models\S1v1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.S1v2">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Models\S1v2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.S2v1">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Models\S2v1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.S2v2">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Models\S2v2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.S3v1">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Models\S3v1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.S3v2">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Models\S3v2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Models.U1s1v1">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Models\u1s1v1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.S1v1Controller">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAgAAAhAAAAAAAGAAAAAAgAAAAAA=</HashCode>
+      <FileName>Controllers\S1v1Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.S1v2Controller">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAABAAABAAAAIAAAAAAAAgBAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\S1v2Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.S2v1Controller">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAQAAAAABAAAAAAAAAAAAAAAAAAIAAAAgAIAABA=</HashCode>
+      <FileName>Controllers\S2v1Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.S2v2Controller">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAIAAAAAAABAAAAAAAAAAAAAAAAAABAAAAQAgAACA=</HashCode>
+      <FileName>Controllers\S2v2Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.S3v1Controller">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAIAAAIAAAAAAAAkAQAAgAAAAAA=</HashCode>
+      <FileName>Controllers\S3v1Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.S3v2Controller">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAABAAAAAEAQAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\S3v2Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="api.Controllers.U1s1v1Controller">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAkAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAAAAAgAA=</HashCode>
+      <FileName>Controllers\U1s1v1Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

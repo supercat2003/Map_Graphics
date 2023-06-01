@@ -1,0 +1,848 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width"
+    />
+
+    <title>
+        Map Graphics
+    </title>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/dialog.js"></script>
+    <script src="/js/rSlider.min.js"></script>
+    <script type="module" src="/js/map-loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://js.arcgis.com/4.25/"></script>
+
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        #viewDiv > * {
+            font-size: 26px;
+        }
+
+
+        #snackbar {
+            visibility: hidden;
+            min-width: 150px;
+            margin-left: -200px;
+            background-color: #123;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 25px;
+        }
+
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+    </style>
+
+
+    <link
+            rel="stylesheet"
+            href="https://js.arcgis.com/4.25/esri/themes/light/main.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/slider.css">
+    <link rel="stylesheet" type="text/css" href="/css/dialog.css">
+    <link rel="stylesheet" type="text/css" href="/css/dialog1.css">
+    <link rel="stylesheet" type="text/css" href="/css/ion.rangeSlider.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/ion.rangeSlider1.css"/>
+
+
+</head>
+<body>
+<div class="grid">
+    <!--    <div class="header">-->
+    <!--        <nav>-->
+    <!--            <div class="main-heading">-->
+    <!--                <h1><span>Map Graphics</span></h1>-->
+    <!--                <p>Веб-сервис для отслеживания параметров водной среды</p>-->
+    <!--            </div>-->
+    <!--            <ul>-->
+    <!--                <li><a href="#faded-page1">Экспорт</a></li>-->
+    <!--                <div id="faded-page1">-->
+    <!--                    <div id="page1">-->
+    <!--                        <div class="modal-header">-->
+    <!--                            <h3 class="modal-title" style="margin: 0 auto">Экспорт данных</h3>-->
+    <!--                            <a href="#" aria-label="close" class="x">❌</a>-->
+    <!--                        </div>-->
+    <!--                        <form>-->
+    <!--                            <div class="row">-->
+    <!--                                <div class="col-25">-->
+    <!--                                    <label for="graph">Граф ВРСЗ</label>-->
+    <!--                                </div>-->
+    <!--                                <div class="col-75">-->
+    <!--                                    <select id="graph" name="graph">-->
+    <!--                                        <option disabled selected>Выберите граф</option>-->
+    <!--                                        <option value="archiveV1">Архив район №1</option>-->
+    <!--                                        <option value="actualV1">Актуальные район №1</option>-->
+    <!--                                        <option value="archiveV2">Архив район №2</option>-->
+    <!--                                        <option value="actualV2">Актуальные район №2</option>-->
+    <!--                                    </select>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+
+    <!--                            <div class="row">-->
+    <!--                                <div class="col-25">-->
+    <!--                                    <label for="format">Формат</label>-->
+    <!--                                </div>-->
+    <!--                                <div class="col-75">-->
+    <!--                                    <select id="format" name="format">-->
+    <!--                                        <option disabled selected>Выберите формат</option>-->
+    <!--                                        <option value="txt">.txt</option>-->
+    <!--                                        <option value="pdf">.pdf</option>-->
+    <!--                                    </select>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+
+    <!--                            <div class="row">-->
+    <!--                                <input type="submit" value="Экспорт" onclick="exportChart()">-->
+    <!--                            </div>-->
+    <!--                        </form>-->
+
+    <!--                        <div id="snackbar">Выберите граф на главном экране</div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+
+    <!--                <li><a href="#" onclick="importData()" id="myButton">Импорт</a></li>-->
+
+
+    <!--                <li><a href="#faded-page">Добавить</a></li>-->
+    <!--                <div id="faded-page">-->
+    <!--                    <div id="page">-->
+    <!--                        <div class="modal-header">-->
+    <!--                            <h3 class="modal-title" style="margin: 0 auto">Добавление данных</h3>-->
+    <!--                            <a href="#" aria-label="close" class="x">❌</a>-->
+    <!--                        </div>-->
+    <!--                        <form id="myForm">-->
+    <!--                            <div class="row">-->
+    <!--&lt;!&ndash;                                <div class="col-25">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <label for="hValue">Губина</label>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <div class="col-75">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <input id="hValue" type="number" step="0.01" placeholder="0,00"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+
+    <!--                                <div class="col-25">-->
+    <!--                                    <label style="padding: 80px 0;">Значения</label>-->
+    <!--                                </div>-->
+    <!--                                <div class="col-75">-->
+    <!--                                    <table id="tableVH">-->
+    <!--                                        <tbody id="tableBody">-->
+    <!--                                        <tr>-->
+    <!--                                            <th><label style="color: black">Глубина</label></th>-->
+    <!--                                            <th><label style="color: black">Скорость</label></th>-->
+    <!--                                        </tr>-->
+    <!--                                        <tr>-->
+    <!--                                            <th><button onclick="displayResult(1)" style="width: 100%; margin: auto">Добавить строчку</button></th>-->
+    <!--                                            <th><button onclick="myDeleteFunction()" style="width: 100%; margin: auto">Удалить строчку</button></th>-->
+    <!--                                        </tr>-->
+    <!--                                        <tr>-->
+    <!--                                            <td> <input class="hValue" type="number" step="0.01" placeholder="0,00"/></td>-->
+    <!--                                            <td> <input class="vValue" type="number" step="0.01" placeholder="0,00"/></td>-->
+    <!--                                        </tr>-->
+    <!--                                        </tbody>-->
+    <!--                                    </table>-->
+
+    <!--                                </div>-->
+
+    <!--                            </div>-->
+    <!--&lt;!&ndash;                            <div class="row">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <div class="col-25">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <label for="vValue">Скорость</label>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <div class="col-75">&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <input id="vValue" type="number" step="0.01" placeholder="0,00"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+    <!--                            <div class="row">-->
+    <!--                                <div class="col-25">-->
+    <!--                                    <label for="season">Сезон</label>-->
+    <!--                                </div>-->
+    <!--                                <div class="col-75">-->
+    <!--                                    <select id="season" name="season" >-->
+    <!--                                        <option disabled selected>Выберите сезон</option>-->
+    <!--                                        <option value="mar">Март</option>-->
+    <!--                                        <option value="apr">Апрель</option>-->
+    <!--                                        <option value="may">Май</option>-->
+    <!--                                        <option value="jun">Июнь</option>-->
+    <!--                                    </select>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+
+    <!--                            <div class="row">-->
+    <!--                                <div class="col-25">-->
+    <!--                                    <label for="area">Район</label>-->
+    <!--                                </div>-->
+    <!--                                <div class="col-75">-->
+    <!--                                    <select id="area" name="area">-->
+    <!--                                        <option disabled selected>Выберите район</option>-->
+    <!--                                        <option value="one">Первый</option>-->
+    <!--                                        <option value="two">Второй</option>-->
+    <!--                                    </select>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+
+    <!--                            <div class="row">-->
+    <!--                                <input type="submit" value="Добавить" onclick="addData()">-->
+    <!--                                <input type="reset" value="Очистить">-->
+
+
+    <!--                            </div>-->
+    <!--                        </form>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--            </ul>-->
+    <!--        </nav>-->
+    <!--    </div>-->
+    <!--    <div class="area-map">-->
+    <!--        <div id="viewDiv"></div>-->
+    <!--    </div>-->
+
+    <!--    <div class="space">-->
+    <!--        <div class="title">-->
+    <!--            Район №1-->
+    <!--        </div>-->
+
+    <!--        <div class="tabs_wrap">-->
+    <!--            <div class="tabs">-->
+    <!--                <ul>-->
+    <!--                    <li id="tab1">Архив</li>-->
+    <!--                    <li id="tab2">Актуальные</li>-->
+    <!--                    <li id="tab3">Импорт</li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <!--        <div class="container">-->
+    <!--            <ul>-->
+    <!--                <li class="item_wrap">-->
+    <!--                    <div class="item">-->
+    <!--                        <div id="tab1c" data-tabs="tab1c">-->
+    <!--                            <div class="slider-container">-->
+    <!--                                &lt;!&ndash;                                <input type="range" min="1" max="100" value="1" id="myRange">&ndash;&gt;-->
+    <!--                                &lt;!&ndash;                                <span style="color: transparent" id="demo"></span>&ndash;&gt;-->
+
+    <!--                                <input type="text" class="js-range-slider" name="my_range" value="" id="myRange"/>-->
+    <!--                                <span style="color: transparent" id="demo"></span>-->
+
+    <!--                            </div>-->
+    <!--                            &lt;!&ndash;                            <div class="slider-container">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                                <input type="text" id="slider" class="slider">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+    <!--                            <div class="area-chart">-->
+    <!--                                <canvas id="myChart"></canvas>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </li>-->
+    <!--                <li class="item_wrap">-->
+    <!--                    <div class="item">-->
+    <!--                        <div id="tab2c" data-tabs="tab2c">-->
+    <!--                            &lt;!&ndash;                            <div class="slider-container">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                                <input type="text" id="slider3" class="slider">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+
+    <!--                            <div class="slider-container">-->
+    <!--&lt;!&ndash;                                <input type="text" class="js-range-slider" name="my_range" value="" id="myRange3"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <span style="color: transparent" id="demo3"></span>&ndash;&gt;-->
+
+    <!--                                <input type="text" class="demo_2" name="demo_2" value="" id="demo_2"/>-->
+    <!--                            </div>-->
+    <!--                            <div class="area-chart">-->
+    <!--                                <canvas id="myChart3"></canvas>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </li>-->
+    <!--                <li class="item_wrap">-->
+    <!--                    <div class="item">-->
+    <!--                        <div id="tab3c" data-tabs="tab3c">-->
+
+
+    <!--                            <div class="area-chart">-->
+    <!--                                <canvas id="myChart6"></canvas>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <div class="space">-->
+    <!--        <div class="title">-->
+    <!--            Район №2-->
+    <!--        </div>-->
+
+    <!--        <div class="tabs_wrap">-->
+    <!--            <div class="tabs">-->
+    <!--                <ul>-->
+    <!--                    <li id="tab11">Архив</li>-->
+    <!--                    <li id="tab22">Актуальные</li>-->
+    <!--                    <li id="tab33">Импорт</li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <!--        <div class="container">-->
+    <!--            <ul>-->
+    <!--                <li class="item_wrap">-->
+    <!--                    <div class="item">-->
+    <!--                        <div id="tab11c" data-tabs="tab1c">-->
+    <!--                            <div class="slider-container">-->
+    <!--                                &lt;!&ndash;                                <input type="range" min="1" max="100" value="1" id="myRange">&ndash;&gt;-->
+    <!--                                &lt;!&ndash;                                <span style="color: transparent" id="demo"></span>&ndash;&gt;-->
+
+    <!--                                <input type="text" class="js-range-slider1" name="my_range" value="" id="myRange2"/>-->
+    <!--                                <span style="color: transparent" id="demo2"></span>-->
+
+    <!--                            </div>-->
+    <!--                            &lt;!&ndash;                            <div class="slider-container">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                                <input type="text" id="slider" class="slider">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+    <!--                            <div class="area-chart">-->
+    <!--                                <canvas id="myChart2"></canvas>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </li>-->
+    <!--                <li class="item_wrap">-->
+    <!--                    <div class="item">-->
+    <!--                        <div id="tab22c" data-tabs="tab2c">-->
+    <!--                            &lt;!&ndash;                            <div class="slider-container">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                                <input type="text" id="slider3" class="slider">&ndash;&gt;-->
+    <!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+
+    <!--                            <div class="slider-container">-->
+    <!--&lt;!&ndash;                                <input type="text" class="js-range-slider1" name="my_range" value="" id="myRange4"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <span style="color: transparent" id="demo4"></span>&ndash;&gt;-->
+
+    <!--                                <input type="text" class="demo_1" name="demo_1" value="" id="demo_1"/>-->
+    <!--                            </div>-->
+    <!--                            <div class="area-chart">-->
+    <!--                                <canvas id="myChart4"></canvas>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </li>-->
+    <!--                <li class="item_wrap">-->
+    <!--                    <div class="item">-->
+    <!--                        <div id="tab33c" data-tabs="tab3c">-->
+
+
+    <!--                            <div class="area-chart">-->
+    <!--                                <canvas id="myChart5"></canvas>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <!--    <div class="footer">-->
+    <!--        <div class="main-heading">-->
+    <!--            <h1><span>Источники</span></h1>-->
+    <!--            <p>Технология для разработки карты: ArcGIS Server</p>-->
+    <!--            <p>Данные акваторий предоставлены АО "Корпорация Комета"</p>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+
+    <!--    <div class="grid">-->
+    <div class="header">
+        <nav>
+            <div class="main-heading">
+                <h1><span>Map Graphics</span></h1>
+                <p>Веб-сервис для отслеживания параметров водной среды</p>
+            </div>
+            <ul>
+                <li><a href="#faded-page1">Экспорт</a></li>
+                <div id="faded-page1">
+                    <div id="page1">
+                        <div class="modal-header">
+                            <h3 class="modal-title" style="margin: 0 auto">Экспорт данных</h3>
+                            <a href="#" aria-label="close" class="x">❌</a>
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="graph">Граф ВРСЗ</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="graph" name="graph">
+                                        <option disabled selected>Выберите граф</option>
+                                        <option value="archiveV1">Архив район №1</option>
+                                        <option value="actualV1">Актуальные район №1</option>
+                                        <option value="archiveV2">Архив район №2</option>
+                                        <option value="actualV2">Актуальные район №2</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="format">Формат</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="format" name="format">
+                                        <option disabled selected>Выберите формат</option>
+                                        <option value="txt">.txt</option>
+                                        <option value="pdf">.pdf</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <input type="submit" value="Экспорт" onclick="exportChart()">
+                            </div>
+                        </form>
+
+                        <div id="snackbar">Выберите граф на главном экране</div>
+                    </div>
+                </div>
+
+
+                <li><a href="#" onclick="importData()" id="myButton">Импорт</a></li>
+
+
+                <li><a href="#faded-page">Добавить</a></li>
+                <div id="faded-page">
+                    <div id="page">
+                        <div class="modal-header">
+                            <h3 class="modal-title" style="margin: 0 auto">Добавление данных</h3>
+                            <a href="#" aria-label="close" class="x">❌</a>
+                        </div>
+                        <form id="myForm">
+                            <div class="row">
+                                <!--                                <div class="col-25">-->
+                                <!--                                    <label for="hValue">Губина</label>-->
+                                <!--                                </div>-->
+                                <!--                                <div class="col-75">-->
+                                <!--                                    <input id="hValue" type="number" step="0.01" placeholder="0,00"/>-->
+                                <!--                                </div>-->
+
+
+                                <div class="col-25">
+                                    <label style="padding: 80px 0;">Значения</label>
+                                </div>
+                                <div class="col-75">
+                                    <table id="tableVH">
+                                        <tbody id="tableBody">
+                                        <tr>
+                                            <th><label style="color: black">Глубина</label></th>
+                                            <th><label style="color: black">Скорость</label></th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <button onclick="displayResult(1)"
+                                                        style="width: 100%; margin: auto">Добавить строчку
+                                                </button>
+                                            </th>
+                                            <th>
+                                                <button onclick="myDeleteFunction()"
+                                                        style="width: 100%; margin: auto">Удалить строчку
+                                                </button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="hValue" type="number" step="0.01"
+                                                       placeholder="0,00"/></td>
+                                            <td><input class="vValue" type="number" step="0.01"
+                                                       placeholder="0,00"/></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                            <!--                            <div class="row">-->
+                            <!--                                <div class="col-25">-->
+                            <!--                                    <label for="vValue">Скорость</label>-->
+                            <!--                                </div>-->
+                            <!--                                <div class="col-75">-->
+                            <!--                                    <input id="vValue" type="number" step="0.01" placeholder="0,00"/>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="season">Сезон</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="season" name="season">
+                                        <option disabled selected>Выберите сезон</option>
+                                        <option value="mar">Март</option>
+                                        <option value="apr">Апрель</option>
+                                        <option value="may">Май</option>
+                                        <option value="jun">Июнь</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="area">Район</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="area" name="area">
+                                        <option disabled selected>Выберите район</option>
+                                        <option value="one">Первый</option>
+                                        <option value="two">Второй</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <input type="submit" value="Добавить" onclick="addData()">
+                                <input type="reset" value="Очистить">
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="area-map">
+        <div id="viewDiv"></div>
+    </div>
+
+
+    <div class="space">
+        <div class="title">
+            Район №1
+        </div>
+
+        <div class="tabs_wrap">
+            <div class="tabs">
+                <ul>
+                    <li id="tab1">Архив</li>
+                    <li id="tab2">Актуальные</li>
+                    <li id="tab3">Импорт</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <ul>
+                <li class="item_wrap">
+                    <div class="item">
+                        <div id="tab1c" data-tabs="tab1c">
+                            <div class="slider-container">
+                                <!--                                <input type="range" min="1" max="100" value="1" id="myRange">-->
+                                <!--                                <span style="color: transparent" id="demo"></span>-->
+
+<!--                                <input type="text" class="js-range-slider" name="my_range" value="" id="myRange"/>-->
+<!--                                <span style="color: transparent" id="demo"></span>-->
+
+                                <input type="text" class="demo_2" name="demo_2" value="" id="demo_2"/>
+
+                            </div>
+                            <!--                            <div class="slider-container">-->
+                            <!--                                <input type="text" id="slider" class="slider">-->
+                            <!--                            </div>-->
+                            <div class="area-chart">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item_wrap">
+                    <div class="item">
+                        <div id="tab2c" data-tabs="tab2c">
+                            <!--                            <div class="slider-container">-->
+                            <!--                                <input type="text" id="slider3" class="slider">-->
+                            <!--                            </div>-->
+
+                            <div class="slider-container">
+                                <input type="text" class="js-range-slider" name="my_range" value="" id="myRange3"/>
+                                <span style="color: transparent" id="demo3"></span>
+                            </div>
+                            <div class="area-chart">
+                                <canvas id="myChart3"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item_wrap">
+                    <div class="item">
+                        <div id="tab3c" data-tabs="tab3c">
+
+
+                            <div class="area-chart">
+                                <canvas id="myChart6"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="space">
+        <div class="title">
+            Район №2
+        </div>
+
+        <div class="tabs_wrap">
+            <div class="tabs">
+                <ul>
+                    <li id="tab11">Архив</li>
+                    <li id="tab22">Актуальные</li>
+                    <li id="tab33">Импорт</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <ul>
+                <li class="item_wrap">
+                    <div class="item">
+                        <div id="tab11c" data-tabs="tab1c">
+                            <div class="slider-container">
+                                <!--                                <input type="range" min="1" max="100" value="1" id="myRange">-->
+                                <!--                                <span style="color: transparent" id="demo"></span>-->
+
+<!--                                <input type="text" class="js-range-slider1" name="my_range" value="" id="myRange2"/>-->
+<!--                                <span style="color: transparent" id="demo2"></span>-->
+
+                                <input type="text" class="demo_1" name="demo_1" value="" id="demo_1"/>
+
+                            </div>
+                            <!--                            <div class="slider-container">-->
+                            <!--                                <input type="text" id="slider" class="slider">-->
+                            <!--                            </div>-->
+                            <div class="area-chart">
+                                <canvas id="myChart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item_wrap">
+                    <div class="item">
+                        <div id="tab22c" data-tabs="tab2c">
+                            <!--                            <div class="slider-container">-->
+                            <!--                                <input type="text" id="slider3" class="slider">-->
+                            <!--                            </div>-->
+
+                            <div class="slider-container">
+                                <input type="text" class="js-range-slider1" name="my_range" value="" id="myRange4"/>
+                                <span style="color: transparent" id="demo4"></span>
+
+
+                            </div>
+                            <div class="area-chart">
+                                <canvas id="myChart4"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item_wrap">
+                    <div class="item">
+                        <div id="tab33c" data-tabs="tab3c">
+
+
+                            <div class="area-chart">
+                                <canvas id="myChart5"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="main-heading">
+            <h1><span>Источники</span></h1>
+            <p>Технология для разработки карты: ArcGIS Server</p>
+            <p>Данные акваторий предоставлены АО "Корпорация Комета"</p>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j('#tab2c, #tab3c').hide();
+        j('#tab1').click(function () {
+            j('#tab1c').show();
+            j('#tab2c, #tab3c').hide();
+        });
+
+        j('#tab2').click(function () {
+            j('#tab2c').show();
+            j('#tab1c, #tab3c').hide();
+        });
+
+        j('#tab3').click(function () {
+            j('#tab3c').show();
+            j('#tab1c, #tab2c').hide();
+        });
+
+        j('#tab22c, #tab33c').hide();
+        j('#tab11').click(function () {
+            j('#tab11c').show();
+            j('#tab22c, #tab33c').hide();
+        });
+
+        j('#tab22').click(function () {
+            j('#tab22c').show();
+            j('#tab11c, #tab33c').hide();
+        });
+
+        j('#tab33').click(function () {
+            j('#tab33c').show();
+            j('#tab11c, #tab22c').hide();
+        });
+    });
+
+
+    var tabs = document.querySelectorAll(".tabs_wrap ul li");
+    var tab1c = document.querySelectorAll(".tab1c");
+    var tab2c = document.querySelectorAll(".tab2c");
+    var all = document.querySelectorAll(".item_wrap");
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            tabs.forEach((tab) => {
+                tab.classList.remove("active");
+            })
+            tab.classList.add("active");
+            var tabval = tab.getAttribute("data-tabs");
+
+            all.forEach((item) => {
+                item.style.display = "none";
+            })
+
+            if (tabval == "tab1c") {
+                tab1c.forEach((tab1c) => {
+                    tab1c.style.display = "block";
+                })
+            } else if (tabval == "tab2c") {
+                tab2c.forEach((tab2c) => {
+                    tab2c.style.display = "block";
+                })
+            } else {
+                all.forEach((item) => {
+                    item.style.display = "block";
+                })
+            }
+
+        })
+    })
+
+
+    function displayResult(numRows) {
+        var table = document.getElementById("tableBody");
+        table.innerHTML += '<tr><td> <input class="hValue" type="number" step="0.01" placeholder="0,00"/></td><td> <input class="vValue" type="number" step="0.01" placeholder="0,00"/></td></tr>';
+
+
+        // for (var i = 0; i < numRows; i++) { // число строк
+        //     var row = table.insertRow(-1); //в конец таблицы
+        //     for (var j = 0; j < 2; j++) {
+        //         var cell = row.insertCell(j);
+        //         cell.innerHTML = '<input type="number" step="0.01" placeholder="0,00"/>';
+        //     }
+        // }
+    }
+
+
+    function myDeleteFunction() {
+        var table = document.getElementById("tableVH");
+        var rowCount = table.rows.length;
+        if (rowCount > 1) {
+            table.deleteRow(rowCount - 1);
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
