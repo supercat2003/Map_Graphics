@@ -44,7 +44,7 @@ namespace api
             }
 
 
-            app.UseCors(options => options.WithOrigins("http://localhost:5001").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+            app.UseCors(options => options.WithOrigins("http://80.78.241.80:5001").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 
             //app.UseMvc();
 
