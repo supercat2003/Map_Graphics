@@ -11,14 +11,14 @@ services:
     build: ./jsontest
     ports:
       - "5001:5001"
-  map_postgres:
+  postgres:
     restart: always
     build: ./postgres
     expose: 
-      - "5430"
+      - "5434"
     ports:
-      - "5430:5430"
-    command: -p 5430
+      - "5434:5434"
+    command: -p 5434
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: 231203

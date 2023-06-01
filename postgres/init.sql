@@ -5,7 +5,7 @@
 -- Dumped from database version 13.4
 -- Dumped by pg_dump version 13.4
 
--- Started on 2023-05-19 11:32:46
+-- Started on 2023-06-01 21:58:45
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -945,6 +945,9 @@ COPY public."S4v2" (id, h, v) FROM stdin;
 4	64.05	96.53
 5	54.83	74.94
 6	70	90
+8	200	300
+7	400	500
+9	600	700
 \.
 
 
@@ -973,6 +976,7 @@ COPY public."U1s1v22" ("Id", "H", "V") FROM stdin;
 4	300	400
 5	100	200
 3	500	600
+6	0.43	9
 \.
 
 
@@ -2492,7 +2496,7 @@ SELECT pg_catalog.setval('public.s4v1_id_seq', 19, true);
 -- Name: s4v2_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.s4v2_id_seq', 6, true);
+SELECT pg_catalog.setval('public.s4v2_id_seq', 9, true);
 
 
 --
@@ -2510,7 +2514,7 @@ SELECT pg_catalog.setval('public.u1s1v1_id_seq', 125, true);
 -- Name: u1s1v2_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.u1s1v2_id_seq', 5, true);
+SELECT pg_catalog.setval('public.u1s1v2_id_seq', 6, true);
 
 
 --
@@ -2747,7 +2751,7 @@ ALTER TABLE ONLY public.v
     ADD CONSTRAINT v_pkey PRIMARY KEY (id);
 
 
--- Completed on 2023-05-19 11:32:47
+-- Completed on 2023-06-01 21:58:46
 
 --
 -- PostgreSQL database dump complete

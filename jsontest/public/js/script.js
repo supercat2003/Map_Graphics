@@ -86,7 +86,7 @@ window.onload = async function () {
 
 
     const response = await fetch(
-        'http://80.78.241.80:30511/api/S1v1ANDS2v1');
+        'http://80.78.241.80:3200/api/S1v1ANDS2v1');
     const data = await response.json();
     length = data.length;
 
@@ -113,7 +113,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/S1v1ANDS2v1');
+                    'http://80.78.241.80:3200/api/S1v1ANDS2v1');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -129,7 +129,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS2 = await fetch(
-                    'http://80.78.241.80:30511/api/S2v1ANDS3v1');
+                    'http://80.78.241.80:3200/api/S2v1ANDS3v1');
                 const dataS2 = await responseS2.json();
                 length = dataS2.length;
 
@@ -145,7 +145,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS3 = await fetch(
-                    'http://80.78.241.80:30511/api/S3v1ANDS4v1');
+                    'http://80.78.241.80:3200/api/S3v1ANDS4v1');
                 const dataS3 = await responseS3.json();
                 length = dataS3.length;
 
@@ -161,7 +161,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS4 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S1v1');
+                    'http://80.78.241.80:3200/api/u1S1v1');
                 const dataS4 = await responseS4.json();
                 length = dataS4.length;
 
@@ -177,7 +177,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS5 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S2v1');
+                    'http://80.78.241.80:3200/api/u1S2v1');
                 const dataS5 = await responseS5.json();
                 length = dataS5.length;
 
@@ -193,7 +193,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS6 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S3v1');
+                    'http://80.78.241.80:3200/api/u1S3v1');
                 const dataS6 = await responseS6.json();
                 length = dataS6.length;
 
@@ -209,7 +209,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS7 = await fetch(
-                    'http://80.78.241.80:30511/api/S3v1');
+                    'http://80.78.241.80:3200/api/S3v1');
                 const dataS7 = await responseS7.json();
                 length = dataS7.length;
 
@@ -225,7 +225,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS88 = await fetch(
-                    'http://80.78.241.80:30511/api/S3v2');
+                    'http://80.78.241.80:3200/api/S3v2');
                 const dataS88 = await responseS88.json();
                 length = dataS88.length;
 
@@ -241,7 +241,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS8 = await fetch(
-                    'http://80.78.241.80:30511/api/S3v1');
+                    'http://80.78.241.80:3200/api/S3v1');
                 const dataS8 = await responseS8.json();
                 length = dataS8.length;
 
@@ -257,7 +257,7 @@ window.onload = async function () {
                 yValues.splice(0, yValues.length);
 
                 const responseS9 = await fetch(
-                    'http://80.78.241.80:30511/api/S2v2');
+                    'http://80.78.241.80:3200/api/S2v2');
                 const dataS9 = await responseS9.json();
                 length = dataS9.length;
 
@@ -275,7 +275,7 @@ window.onload = async function () {
 
 
     const response2 = await fetch(
-        'http://80.78.241.80:30511/api/S1v2ANDS2v2');
+        'http://80.78.241.80:3200/api/S1v2ANDS2v2');
     const data2 = await response2.json();
     length = data2.length;
 
@@ -302,7 +302,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/S1v2ANDS2v2');
+                    'http://80.78.241.80:3200/api/S1v2ANDS2v2');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -318,7 +318,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/S2v2ANDS3v2');
+                    'http://80.78.241.80:3200/api/S2v2ANDS3v2');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -334,7 +334,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/S1v3ANDS4v2');
+                    'http://80.78.241.80:3200/api/S1v3ANDS4v2');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -350,7 +350,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S1v22');
+                    'http://80.78.241.80:3200/api/u1S1v22');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -366,7 +366,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S1v22');
+                    'http://80.78.241.80:3200/api/u1S1v22');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -382,7 +382,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S1v22');
+                    'http://80.78.241.80:3200/api/u1S1v22');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -398,7 +398,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S1v22');
+                    'http://80.78.241.80:3200/api/u1S1v22');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -414,7 +414,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S1v22');
+                    'http://80.78.241.80:3200/api/u1S1v22');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -430,7 +430,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S3v2');
+                    'http://80.78.241.80:3200/api/u1S3v2');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -446,7 +446,7 @@ window.onload = async function () {
                 yValues2.splice(0, yValues2.length);
 
                 const responseS1 = await fetch(
-                    'http://80.78.241.80:30511/api/u1S2v2');
+                    'http://80.78.241.80:3200/api/u1S2v2');
                 const dataS1 = await responseS1.json();
                 length = dataS1.length;
 
@@ -466,7 +466,7 @@ window.onload = async function () {
 
 
     const response3 = await fetch(
-        'http://80.78.241.80:30511/api/u1S3v1');
+        'http://80.78.241.80:3200/api/u1S3v1');
     const data3 = await response3.json();
     length = data3.length;
 
@@ -489,7 +489,7 @@ window.onload = async function () {
             yValues3.splice(0, yValues3.length);
 
             const responseS1 = await fetch(
-                'http://80.78.241.80:30511/api/u1S1v1');
+                'http://80.78.241.80:3200/api/u1S1v1');
             const dataS1 = await responseS1.json();
             length = dataS1.length;
 
@@ -506,7 +506,7 @@ window.onload = async function () {
             yValues3.splice(0, yValues3.length);
 
             const responseS2 = await fetch(
-                'http://80.78.241.80:30511/api/u1S2v1');
+                'http://80.78.241.80:3200/api/u1S2v1');
             const dataS2 = await responseS2.json();
             length = dataS2.length;
 
@@ -522,7 +522,7 @@ window.onload = async function () {
             yValues3.splice(0, yValues3.length);
 
             const responseS3 = await fetch(
-                'http://80.78.241.80:30511/api/u1S3v1');
+                'http://80.78.241.80:3200/api/u1S3v1');
             const dataS3 = await responseS3.json();
             length = dataS3.length;
 
@@ -538,7 +538,7 @@ window.onload = async function () {
             yValues3.splice(0, yValues3.length);
 
             const responseS3 = await fetch(
-                'http://80.78.241.80:30511/api/S4v1');
+                'http://80.78.241.80:3200/api/S4v1');
             const dataS3 = await responseS3.json();
             length = dataS3.length;
 
@@ -554,7 +554,7 @@ window.onload = async function () {
 
 
     const responseS3 = await fetch(
-        'http://80.78.241.80:30511/api/S4v2');
+        'http://80.78.241.80:3200/api/S4v2');
 
     const dataS3 = await responseS3.json();
     length = dataS3.length;
@@ -582,7 +582,7 @@ window.onload = async function () {
             yValues4.splice(0, yValues4.length);
 
             const responseS1 = await fetch(
-                'http://80.78.241.80:30511/api/u1S1v22');
+                'http://80.78.241.80:3200/api/u1S1v22');
             const dataS1 = await responseS1.json();
             length = dataS1.length;
 
@@ -599,7 +599,7 @@ window.onload = async function () {
             yValues4.splice(0, yValues4.length);
 
             const responseS2 = await fetch(
-                'http://80.78.241.80:30511/api/u1S2v2');
+                'http://80.78.241.80:3200/api/u1S2v2');
             const dataS2 = await responseS2.json();
             length = dataS2.length;
 
@@ -615,7 +615,7 @@ window.onload = async function () {
             yValues4.splice(0, yValues4.length);
 
             const responseS3 = await fetch(
-                'http://80.78.241.80:30511/api/u1S3v2');
+                'http://80.78.241.80:3200/api/u1S3v2');
             const dataS3 = await responseS3.json();
             length = dataS3.length;
 
@@ -631,7 +631,7 @@ window.onload = async function () {
             yValues4.splice(0, yValues4.length);
 
             const responseS3 = await fetch(
-                'http://80.78.241.80:30511/api/S4v2');
+                'http://80.78.241.80:3200/api/S4v2');
             const dataS3 = await responseS3.json();
             length = dataS3.length;
 
@@ -886,7 +886,7 @@ function addData() {
         if (selectedOption3 === 'one') {
             if (selectedOption2 === 'mar') {
 
-                fetch('http://80.78.241.80:30511/api/u1S1v1', {
+                fetch('http://80.78.241.80:3200/api/u1S1v1', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -913,7 +913,7 @@ function addData() {
 
             } else if (selectedOption2 === 'apr') {
 
-                fetch('http://80.78.241.80:30511/api/u1S2v1', {
+                fetch('http://80.78.241.80:3200/api/u1S2v1', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -941,7 +941,7 @@ function addData() {
 
             } else if (selectedOption2 === 'may') {
 
-                fetch('http://80.78.241.80:30511/api/u1S3v1', {
+                fetch('http://80.78.241.80:3200/api/u1S3v1', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -968,7 +968,7 @@ function addData() {
 
             } else if (selectedOption2 === 'jun') {
 
-                fetch('http://80.78.241.80:30511/api/S4v1', {
+                fetch('http://80.78.241.80:3200/api/S4v1', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -997,7 +997,7 @@ function addData() {
         } else if (selectedOption3 === 'two') {
             if (selectedOption2 === 'mar') {
 
-                fetch('http://80.78.241.80:30511/api/u1S1v22', {
+                fetch('http://80.78.241.80:3200/api/u1S1v22', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -1024,7 +1024,7 @@ function addData() {
 
             } else if (selectedOption2 === 'apr') {
 
-                fetch('http://80.78.241.80:30511/api/u1S2v2', {
+                fetch('http://80.78.241.80:3200/api/u1S2v2', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -1052,7 +1052,7 @@ function addData() {
 
             } else if (selectedOption2 === 'may') {
 
-                fetch('http://80.78.241.80:30511/api/u1S3v2', {
+                fetch('http://80.78.241.80:3200/api/u1S3v2', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -1079,7 +1079,7 @@ function addData() {
 
             } else if (selectedOption2 === 'jun') {
 
-                fetch('http://80.78.241.80:30511/api/S4v2', {
+                fetch('http://80.78.241.80:3200/api/S4v2', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
